@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Benevolant — Fresh fruit and bakery</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);
+--bg:#fbf8f3;--card:#fff;--text:#24302a;--muted:#6b756e;--line:#e8e1d6;--green:#2f4a3a;--on:#fff;--berry:#c8403f;--peach:#f6d9c4;--cocoa:#6b4535;--soft:#f3ede2}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#161b18;--card:#1f2622;--text:#f1ece3;--muted:#a3ada6;--line:#2f3832;--green:#a9d3b6;--on:#161b18;--soft:#232b26;--peach:#3a2f27}}
+:root[data-theme="dark"]{--bg:#161b18;--card:#1f2622;--text:#f1ece3;--muted:#a3ada6;--line:#2f3832;--green:#a9d3b6;--on:#161b18;--soft:#232b26;--peach:#3a2f27}
+*,*:before,*:after{box-sizing:inherit}
+html{scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--text);font:400 16px/1.6 Inter,system-ui,sans-serif}
+h1,h2,h3{font-family:Fraunces,Georgia,serif;font-weight:400;line-height:1.12;margin:0}
+h1{font-size:clamp(40px,6vw,72px)}h2{font-size:clamp(28px,3.6vw,42px)}h3{font-size:20px}
+p{margin:0}a{color:inherit}button{font:inherit;color:inherit;cursor:pointer}
+:focus-visible{outline:3px solid var(--berry);outline-offset:2px}
+.wrap{max-width:1120px;margin:0 auto;padding:0 24px}
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:color-mix(in srgb,var(--bg) 92%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.bar{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;height:68px}
+.bar nav{display:flex;gap:26px;font-size:15px}.bar nav a{text-decoration:none;color:var(--muted);padding:4px 0;border-bottom:2px solid transparent}
+.bar nav a.on,.bar nav a:hover{color:var(--text);border-color:var(--berry)}
+.logo{font:600 24px Fraunces,serif;text-decoration:none;letter-spacing:.01em}
+.right{justify-self:end}
+.cartbtn{background:none;border:1.5px solid var(--line);border-radius:99px;padding:8px 16px;font-size:14px}
+.cartbtn b{display:inline-block;min-width:22px;background:var(--green);color:var(--on);border-radius:99px;padding:0 6px;margin-left:6px;font-size:12px}
+.cartbtn.pop{animation:pop .4s}@keyframes pop{50%{transform:scale(1.12)}}
+.btn{display:inline-block;background:var(--green);color:var(--on);border:0;border-radius:99px;padding:13px 26px;font-weight:600;font-size:15px;text-decoration:none;transition:transform .2s,opacity .2s}
+.btn:hover{transform:translateY(-2px);opacity:.92}.btn.alt{background:transparent;color:var(--text);border:1.5px solid var(--text)}
+section{padding:80px 0}.sub{color:var(--muted);max-width:52ch;margin-top:12px}
+.hero .wrap{display:grid;grid-template-columns:1.1fr .9fr;gap:48px;align-items:center;padding-top:56px;padding-bottom:56px}
+.hero p.l{font-size:19px;color:var(--muted);margin:20px 0 30px;max-width:44ch}.hero h1 em{font-style:italic;color:var(--berry)}
+.stage{position:relative;aspect-ratio:1;background:var(--peach);border-radius:50% 50% 24px 24px;display:grid;place-items:center;overflow:hidden}
+.stage span{position:absolute;font-size:clamp(70px,12vw,130px);transition:transform .2s linear}
+.tiles,.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:40px}
+.grid{grid-template-columns:repeat(4,1fr);gap:20px}
+.tile{display:block;text-decoration:none;background:var(--card);border:1px solid var(--line);border-radius:20px;overflow:hidden;transition:transform .3s,box-shadow .3s}
+.tile:hover{transform:translateY(-4px);box-shadow:0 14px 30px rgba(0,0,0,.08)}
+.tile .im{height:200px;display:grid;place-items:center;font-size:84px;transition:transform .4s}.tile:hover .im{transform:scale(1.06)}
+.tile .tx{padding:18px 20px 22px}.tile .tx p{color:var(--muted);font-size:14px;margin-top:4px}
+.imw{overflow:hidden}
+.card{background:var(--card);border:1px solid var(--line);border-radius:20px;overflow:hidden;display:flex;flex-direction:column;text-align:left;padding:0;transition:transform .3s,box-shadow .3s}
+.card:hover{transform:translateY(-4px);box-shadow:0 14px 30px rgba(0,0,0,.08)}
+.card .im{height:170px;display:grid;place-items:center;font-size:72px}
+.card .tx{padding:16px 18px 18px;flex:1;display:flex;flex-direction:column;gap:4px}
+.card .tx small{color:var(--muted);font-size:13px}.card .row{margin-top:auto;padding-top:10px;display:flex;justify-content:space-between;align-items:center;font-weight:600}
+.add{background:var(--green);color:var(--on);border:0;border-radius:99px;padding:6px 14px;font-size:13px}
+.band{background:var(--soft)}.three{display:grid;grid-template-columns:repeat(3,1fr);gap:32px;text-align:center}
+.three .ic{font-size:34px;margin-bottom:8px}.three p{color:var(--muted);font-size:15px;margin-top:6px}
+.quiz{background:var(--card);border:1px solid var(--line);border-radius:24px;padding:40px;max-width:720px;margin:36px auto 0;text-align:center}
+.opts{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:22px}
+.opt{background:var(--bg);border:1.5px solid var(--line);border-radius:99px;padding:11px 22px;transition:all .2s}
+.opt:hover,.opt.on{border-color:var(--green);background:var(--green);color:var(--on)}
+.dots{display:flex;gap:6px;justify-content:center;margin-bottom:18px}.dots i{width:28px;height:4px;border-radius:2px;background:var(--line)}.dots i.on{background:var(--berry)}
+.quotes{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:36px}
+.quotes figure{margin:0;padding:24px;background:var(--card);border:1px solid var(--line);border-radius:20px}
+.quotes blockquote{margin:0 0 12px;font:400 18px/1.45 Fraunces,serif}.quotes figcaption{font-size:14px;color:var(--muted)}
+.head{padding:56px 0 8px}
+.tabs{display:flex;gap:8px;flex-wrap:wrap;margin:28px 0 14px;border-bottom:1px solid var(--line);padding-bottom:14px}
+.tab{background:none;border:0;padding:8px 16px;border-radius:99px;color:var(--muted)}.tab.on{background:var(--green);color:var(--on)}
+.filters{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-bottom:8px}
+.chip{background:none;border:1.5px solid var(--line);border-radius:99px;padding:6px 14px;font-size:14px}.chip.on{border-color:var(--berry);color:var(--berry)}
+select,input[type=text],input[type=date]{font:inherit;color:var(--text);background:var(--card);border:1.5px solid var(--line);border-radius:12px;padding:9px 12px;width:100%}
+.filters select{width:auto;margin-left:auto}
+.empty{grid-column:1/-1;color:var(--muted);padding:40px 0}
+dialog{border:0;border-radius:24px;padding:0;background:var(--card);color:var(--text);width:min(860px,94vw);max-height:92vh;overflow:auto}
+dialog::backdrop{background:rgba(20,25,22,.55)}
+.pd{display:grid;grid-template-columns:1fr 1fr}.pd .pic{display:grid;place-items:center;font-size:140px;min-height:320px;position:relative;transition:background .4s}
+.pd .pic .msg{position:absolute;bottom:18%;left:10%;right:10%;text-align:center;font:italic 22px Fraunces,serif;color:#fff;text-shadow:0 1px 6px rgba(0,0,0,.6);word-break:break-word}
+.pd .info{padding:32px;display:flex;flex-direction:column;gap:14px}.lab{font-size:13px;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;margin-bottom:6px}
+.x{position:absolute;top:14px;right:14px;z-index:3;background:var(--card);border:1px solid var(--line);border-radius:50%;width:38px;height:38px}
+details{border-top:1px solid var(--line);padding:10px 0;font-size:14px;color:var(--muted)}summary{cursor:pointer;color:var(--text);font-weight:500}
+.drawer{position:fixed;top:0;right:0;bottom:0;width:min(420px,100%);background:var(--card);z-index:40;transform:translateX(105%);transition:transform .35s;display:flex;flex-direction:column;box-shadow:-20px 0 50px rgba(0,0,0,.15);padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+.drawer.open{transform:none}.dh{display:flex;justify-content:space-between;align-items:center;padding:20px 24px;border-bottom:1px solid var(--line)}
+.dl{flex:1;overflow:auto;padding:8px 24px}.ci{display:grid;grid-template-columns:48px 1fr auto;gap:12px;padding:14px 0;border-bottom:1px solid var(--line);align-items:center;font-size:14px}
+.ci .e{font-size:34px}.ci small{color:var(--muted);display:block}.qty{display:inline-flex;align-items:center;gap:8px;margin-top:4px}.qty button{width:26px;height:26px;border-radius:50%;border:1px solid var(--line);background:none}
+.df{padding:20px 24px;border-top:1px solid var(--line);display:flex;flex-direction:column;gap:12px}
+.prog{height:6px;background:var(--line);border-radius:3px;overflow:hidden}.prog i{display:block;height:100%;background:var(--berry);transition:width .4s}
+.scrim{position:fixed;inset:0;background:rgba(20,25,22,.45);z-index:30;opacity:0;pointer-events:none;transition:opacity .3s}.scrim.on{opacity:1;pointer-events:auto}
+.rv{opacity:0;transform:translateY(24px);transition:opacity .7s,transform .7s}.rv.in{opacity:1;transform:none}
+.big{font:400 clamp(28px,4.4vw,52px)/1.2 Fraunces,serif;max-width:22ch}
+.split{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
+.photo{aspect-ratio:4/3;border-radius:24px;display:grid;place-items:center;font-size:110px;background:var(--peach)}
+.tl{position:relative;display:grid;grid-template-columns:repeat(4,1fr);gap:20px;margin-top:48px}
+.tl:before{content:"";position:absolute;top:22px;left:0;height:2px;width:var(--w,0%);background:var(--berry);transition:width 1.4s}
+.tl:after{content:"";position:absolute;top:22px;left:0;right:0;height:2px;background:var(--line);z-index:-1}
+.tl div .n{width:44px;height:44px;border-radius:50%;background:var(--card);border:2px solid var(--berry);display:grid;place-items:center;font-weight:600;margin-bottom:14px}
+.tl p{color:var(--muted);font-size:14px;margin-top:4px}.stat{font:400 52px Fraunces,serif;color:var(--berry)}
+.rec{display:grid;grid-template-columns:1fr 1fr;gap:36px;background:var(--card);border:1px solid var(--line);border-radius:24px;padding:32px;margin-top:28px}
+.rec ol{padding-left:20px;margin:12px 0 0;color:var(--muted)}.rec ol li{margin-bottom:8px}
+.ing{list-style:none;padding:0;margin:12px 0 0}.ing li{padding:9px 0;border-bottom:1px solid var(--line);cursor:pointer;display:flex;gap:10px}
+.ing li:before{content:"○";color:var(--berry)}.ing li.done{text-decoration:line-through;color:var(--muted)}.ing li.done:before{content:"●"}
+.scale{display:inline-flex;gap:6px;margin:10px 0}
+footer{background:var(--green);color:var(--on);padding:56px 0 32px;margin-top:40px}
+footer .wrap{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:32px}footer a{display:block;text-decoration:none;opacity:.85;margin:4px 0}
+footer form{display:flex;gap:8px;margin-top:12px}footer input{border-radius:99px}
+.toast{position:fixed;bottom:calc(24px + env(safe-area-inset-bottom,0px));left:50%;transform:translate(-50%,40px);background:var(--text);color:var(--bg);padding:12px 22px;border-radius:99px;font-size:14px;opacity:0;transition:all .3s;z-index:60;pointer-events:none}.toast.on{opacity:1;transform:translate(-50%,0)}
+@media(max-width:860px){.hero .wrap,.split,.pd,.rec,footer .wrap{grid-template-columns:1fr}.tiles,.three,.quotes{grid-template-columns:1fr}.grid{grid-template-columns:1fr 1fr}.tl{grid-template-columns:1fr 1fr}.bar nav{display:none}.bar{grid-template-columns:auto 1fr}.logo{justify-self:start}.mnav{display:flex!important}}
+.mnav{display:none;gap:18px;padding:10px 0;font-size:14px;overflow-x:auto;border-top:1px solid var(--line)}.mnav a{text-decoration:none;color:var(--muted)}
+@media(prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}html{scroll-behavior:auto}.rv{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+<header><div class="wrap"><div class="bar">
+<nav id="nav"><a href="#/shop">Shop</a><a href="#/story">Story</a><a href="#/recipes">Recipes</a></nav>
+<a class="logo" href="#/">Benevolant</a>
+<div class="right"><button class="cartbtn" id="cb" aria-label="Open cart">Cart<b id="cc">0</b></button></div>
+</div><div class="mnav"><a href="#/">Home</a><a href="#/shop">Shop</a><a href="#/story">Story</a><a href="#/recipes">Recipes</a></div></div></header>
+<main id="app"></main>
+<footer><div class="wrap"><div><h3 style="font-size:26px">Benevolant</h3><p style="opacity:.85;margin-top:10px;max-width:34ch">Fresh fruit and generous bakes, made with care and delivered at their best.</p>
+<form id="nl"><input type="text" placeholder="Your email" aria-label="Email" required><button class="btn" style="background:var(--on);color:var(--green)">Join</button></form></div>
+<div><b>Explore</b><a href="#/shop">Shop</a><a href="#/story">Our story</a><a href="#/recipes">Recipes</a></div>
+<div><b>Help</b><a href="#/story">Delivery areas</a><a href="#/shop">Allergen info</a><a href="#/story">Contact</a></div></div></footer>
+<div class="scrim" id="scrim"></div>
+<aside class="drawer" id="drawer" aria-label="Cart"><div class="dh"><h3>Your cart</h3><button class="x" style="position:static" id="cx" aria-label="Close cart">✕</button></div><div class="dl" id="dl"></div><div class="df" id="df"></div></aside>
+<dialog id="dlg"></dialog><div class="toast" id="toast" role="status"></div>
+<script>
+var P=[
+{id:1,n:"Strawberry Cup",c:"cup",e:"🍓",bg:"#f9d0cf",d:"Hand-hulled strawberries, chilled and ready.",t:["vegan","nutfree"],s:[["Single",6.5],["Family",15]]},
+{id:2,n:"Tropical Mango Cup",c:"cup",e:"🥭",bg:"#fde5b0",d:"Mango, pineapple and a squeeze of lime.",t:["vegan","nutfree"],s:[["Single",7],["Family",16]]},
+{id:3,n:"Berry Medley Cup",c:"cup",e:"🫐",bg:"#d9d4f2",d:"Blueberries, raspberries and blackberries.",t:["vegan","nutfree"],s:[["Single",7.5],["Family",17]]},
+{id:4,n:"Orchard Apple Box",c:"fruit",e:"🍎",bg:"#f6d3c4",d:"Crisp, seasonal apples from partner orchards.",t:["vegan","nutfree"],s:[["1 kg",12],["2.5 kg",26]]},
+{id:5,n:"Sunny Citrus Box",c:"fruit",e:"🍊",bg:"#fbdcae",d:"Oranges, mandarins and lemons, picked ripe.",t:["vegan","nutfree"],s:[["1 kg",14],["2.5 kg",30]]},
+{id:6,n:"Layer Cake",c:"cake",e:"🎂",bg:"#f2dcc8",d:"Three tender layers with silky buttercream.",t:["nutfree"],f:["Chocolate","Vanilla"],msg:1,s:[["6 in · serves 6",38],["8 in · serves 10",52],["10 in · serves 16",68]]},
+{id:7,n:"Fudge Chocolate Cake",c:"cake",e:"🍫",bg:"#dcc3b6",d:"Dark chocolate sponge with a glossy ganache.",t:[],msg:1,s:[["6 in · serves 6",42],["8 in · serves 10",56]]},
+{id:8,n:"Cupcake Box",c:"cupcake",e:"🧁",bg:"#f7d6e2",d:"Light sponge, whipped frosting, a berry on top.",t:["nutfree"],f:["Chocolate","Vanilla"],s:[["Box of 6",21],["Box of 12",38]]}];
+var FL={Chocolate:["#d6b9a8","🍫"],Vanilla:["#f8ecd0","🍰"]};
+var R=[
+{n:"Berry Cake Parfait",tm:"15 min",u:[[8,6],[3,1]],i:[["Vanilla cake cubes",120,"g"],["Berry Medley Cup",.5,"cup"],["Whipped cream",80,"ml"],["Lemon zest",1,"tsp"]],s:["Layer cake cubes in a glass.","Spoon over berries and cream.","Finish with zest and chill 10 minutes."]},
+{n:"Tropical Sundae Cup",tm:"5 min",u:[[2,0]],i:[["Tropical Mango Cup",1,"cup"],["Coconut yoghurt",100,"g"],["Toasted coconut",1,"tbsp"]],s:["Tip the mango cup into a bowl.","Top with yoghurt.","Scatter toasted coconut."]},
+{n:"Citrus Glazed Cupcakes",tm:"20 min",u:[[8,0],[5,0]],i:[["Cupcake Box",1,"box"],["Orange juice",30,"ml"],["Icing sugar",60,"g"]],s:["Whisk juice into icing sugar.","Drizzle over cupcakes.","Top with orange zest from the Citrus Box."]}];
+var cart=[],cat="all",fl={},sort="",q={},app=document.getElementById("app");
+try{cart=JSON.parse(localStorage.getItem("bv-cart")||"[]")}catch(e){}
+function $(i){return document.getElementById(i)}
+function esc(s){var d=document.createElement("div");d.textContent=s;return d.innerHTML}
+function m(n){return"$"+n.toFixed(2)}
+function save(){try{localStorage.setItem("bv-cart",JSON.stringify(cart))}catch(e){}}
+function toast(t){var x=$("toast");x.textContent=t;x.classList.add("on");clearTimeout(x.t);x.t=setTimeout(function(){x.classList.remove("on")},2200)}
+function pid(i){return P.filter(function(p){return p.id==i})[0]}
+function card(p){return'<div class="card"><button class="im" style="background:'+p.bg+';border:0" data-o="'+p.id+'" aria-label="View '+p.n+'">'+p.e+'</button><div class="tx"><b>'+p.n+'</b><small>'+p.d+'</small><div class="row"><span>from '+m(p.s[0][1])+'</span><button class="add" data-o="'+p.id+'">+ Add</button></div></div></div>'}
+function route(){
+  var h=location.hash.replace("#/","")||"home";window.scrollTo(0,0);
+  document.querySelectorAll("#nav a").forEach(function(a){a.classList.toggle("on",a.hash=="#/"+h)});
+  app.innerHTML=({home:home,shop:shop,story:story,recipes:recipes}[h]||home)();
+  if(h=="shop")grid();if(h=="home")quiz(0);reveal();
+}
+function home(){return'<section class="hero" style="padding:0"><div class="wrap"><div><h1>Fresh from the orchard.<br><em>Warm</em> from the oven.</h1><p class="l">Fruit, fruit cups and cakes made generously, with ingredients we would happily serve our own families.</p><a class="btn" href="#/shop">Shop now</a> <a class="btn alt" href="#/story">Our story</a></div><div class="stage" id="stage"><span data-s="12" style="left:14%;top:18%">🍓</span><span data-s="-18" style="right:12%;top:30%">🍊</span><span data-s="24" style="left:30%;bottom:12%">🧁</span></div></div></section>'+
+'<section style="padding-top:40px"><div class="wrap"><h2 class="rv">Shop by craving</h2><div class="tiles">'+[["fruit","🍎","Fresh Fruit","Boxes picked daily","#f6d3c4"],["cup","🍓","Fruit Cups","Ready to eat","#f9d0cf"],["cake","🎂","Bakery","Cakes and cupcakes","#f2dcc8"]].map(function(t){return'<a class="tile rv" href="#/shop" data-cat="'+t[0]+'"><div class="imw"><div class="im" style="background:'+t[4]+'">'+t[1]+'</div></div><div class="tx"><h3>'+t[2]+'</h3><p>'+t[3]+'</p></div></a>'}).join("")+'</div></div></section>'+
+'<section><div class="wrap"><h2 class="rv">Bestsellers</h2><div class="grid">'+[6,1,8,2].map(function(i){return card(pid(i))}).join("")+'</div></div></section>'+
+'<section class="band"><div class="wrap"><div class="three"><div class="rv"><div class="ic">🌱</div><h3>Picked fresh daily</h3><p>Fruit reaches you within 24 hours.</p></div><div class="rv"><div class="ic">🥣</div><h3>Baked to order</h3><p>Every cake is made for your date.</p></div><div class="rv"><div class="ic">🚚</div><h3>Delivered at its best</h3><p>Chilled or warm, as it should be.</p></div></div></div></section>'+
+'<section><div class="wrap" style="text-align:center"><h2 class="rv">Find your perfect treat</h2><p class="sub" style="margin-inline:auto">Three quick taps and we will suggest something.</p><div class="quiz" id="quiz"></div></div></section>'+
+'<section class="band"><div class="wrap"><h2 class="rv">Kind words</h2><div class="quotes"><figure class="rv"><blockquote>The vanilla cake was gone in ten minutes.</blockquote><figcaption>Priya, birthday order</figcaption></figure><figure class="rv"><blockquote>Berries that actually taste like berries.</blockquote><figcaption>Tom, weekly fruit box</figcaption></figure><figure class="rv"><blockquote>Beautiful, and arrived exactly on time.</blockquote><figcaption>Aiko, thank-you cupcakes</figcaption></figure></div></div></section>'}
+var Q=[["Whats the occasion?",["Birthday","Thank you","Just because"]],["Which flavor?",["Chocolate","Vanilla","Fruity"]],["How many are you feeding?",["1 to 6","7 to 12","13 or more"]]];
+function quiz(s){var z=$("quiz");if(!z)return;
+  if(s>2){var f=q[1],g=q[2],r;
+    if(f=="Fruity")r=g=="1 to 6"?[1,0,"Strawberry Cup"]:[3,1,"Berry Medley Family Cup"];
+    else r=g=="13 or more"?[6,2,f+" Layer Cake, 10 in",f]:g=="7 to 12"?[6,1,f+" Layer Cake, 8 in",f]:[8,0,f+" Cupcake Box of 6",f];
+    z.innerHTML='<div class="dots"><i class="on"></i><i class="on"></i><i class="on"></i></div><p class="lab">We suggest</p><h3 style="font-size:28px">'+r[2]+'</h3><div class="opts"><button class="btn" id="qr">View and add</button><button class="opt" id="qa">Start over</button></div>';
+    $("qr").onclick=function(){openP(r[0],{flavor:r[3],size:r[1]})};$("qa").onclick=function(){quiz(0)};return}
+  z.innerHTML='<div class="dots">'+[0,1,2].map(function(i){return'<i class="'+(i<=s?"on":"")+'"></i>'}).join("")+'</div><h3>'+Q[s][0]+'</h3><div class="opts">'+Q[s][1].map(function(o){return'<button class="opt" data-q="'+o+'">'+o+'</button>'}).join("")+'</div>';
+  z.querySelectorAll("[data-q]").forEach(function(b){b.onclick=function(){q[s]=b.dataset.q;quiz(s+1)}})}
+function shop(){return'<div class="wrap"><div class="head"><h1 style="font-size:clamp(36px,5vw,56px)">Shop</h1><p class="sub">Everything is made fresh. Choose a category or filter by dietary need.</p></div><div class="tabs" id="tabs">'+[["all","All"],["fruit","Fruit"],["cup","Fruit Cups"],["cake","Cakes"],["cupcake","Cupcakes"]].map(function(t){return'<button class="tab '+(cat==t[0]?"on":"")+'" data-t="'+t[0]+'">'+t[1]+'</button>'}).join("")+'</div><div class="filters"><button class="chip '+(fl.vegan?"on":"")+'" data-f="vegan">Vegan</button><button class="chip '+(fl.nutfree?"on":"")+'" data-f="nutfree">Nut-free</button><select id="sort" aria-label="Sort"><option value="">Featured</option><option value="a" '+(sort=="a"?"selected":"")+'>Price: low to high</option><option value="d" '+(sort=="d"?"selected":"")+'>Price: high to low</option></select></div><div class="grid" id="g" style="margin-bottom:80px"></div></div>'}
+function grid(){var l=P.filter(function(p){return(cat=="all"||p.c==cat)&&(!fl.vegan||p.t.indexOf("vegan")>-1)&&(!fl.nutfree||p.t.indexOf("nutfree")>-1)});
+  if(sort)l.sort(function(a,b){return sort=="a"?a.s[0][1]-b.s[0][1]:b.s[0][1]-a.s[0][1]});
+  $("g").innerHTML=l.length?l.map(card).join(""):'<p class="empty">Nothing matches those filters yet. Try removing one.</p>'}
+function openP(id,pre){pre=pre||{};var p=pid(id),st={f:pre.flavor||(p.f?p.f[0]:null),s:pre.size||0,msg:""},d=$("dlg");
+  function draw(){var fx=st.f?FL[st.f]:null;
+    d.innerHTML='<button class="x" id="px" aria-label="Close">✕</button><div class="pd"><div class="pic" style="background:'+(fx?fx[0]:p.bg)+'">'+(fx&&p.c=="cake"?fx[1]:p.e)+(p.msg?'<div class="msg" id="mp">'+esc(st.msg)+'</div>':"")+'</div><div class="info"><h2 style="font-size:30px">'+p.n+(st.f?" · "+st.f:"")+'</h2><p style="color:var(--muted)">'+p.d+'</p>'+
+    (p.f?'<div><div class="lab">Flavor</div><div class="opts" style="justify-content:flex-start;margin:0">'+p.f.map(function(f){return'<button class="opt '+(f==st.f?"on":"")+'" data-fl="'+f+'">'+f+'</button>'}).join("")+'</div></div>':"")+
+    '<div><div class="lab">Size</div><div class="opts" style="justify-content:flex-start;margin:0">'+p.s.map(function(s,i){return'<button class="opt '+(i==st.s?"on":"")+'" data-sz="'+i+'">'+s[0]+'</button>'}).join("")+'</div></div>'+
+    (p.msg?'<div><div class="lab">Message on cake (optional)</div><input type="text" id="mi" maxlength="24" placeholder="Happy Birthday!" value="'+esc(st.msg)+'"></div>':"")+
+    '<div style="display:flex;align-items:center;justify-content:space-between;gap:12px"><b style="font:400 30px Fraunces,serif">'+m(p.s[st.s][1])+'</b><button class="btn" id="pa">Add to cart</button></div>'+
+    '<details><summary>Ingredients and allergens</summary>'+(p.c=="cake"||p.c=="cupcake"?"Contains wheat, eggs, milk. Made in a kitchen that handles nuts.":"Fruit only. No additives.")+'</details><details><summary>Storage and delivery</summary>Keep chilled and enjoy within 3 days. Choose your delivery date in the cart.</details></div></div>';
+    $("px").onclick=function(){d.close()};
+    d.querySelectorAll("[data-fl]").forEach(function(b){b.onclick=function(){st.f=b.dataset.fl;draw()}});
+    d.querySelectorAll("[data-sz]").forEach(function(b){b.onclick=function(){st.s=+b.dataset.sz;draw()}});
+    var mi=$("mi");if(mi)mi.oninput=function(){st.msg=mi.value;$("mp").textContent=st.msg};
+    $("pa").onclick=function(){add(id,st.s,st.f,st.msg,1);d.close()}}
+  draw();d.showModal()}
+function add(id,si,f,msg,n){var p=pid(id),k=id+"|"+si+"|"+(f||"")+"|"+(msg||""),x=cart.filter(function(c){return c.k==k})[0];
+  if(x)x.q+=n;else cart.push({k:k,id:id,si:si,f:f,msg:msg,q:n});save();upd();toast(p.n+" added");var b=$("cb");b.classList.remove("pop");void b.offsetWidth;b.classList.add("pop")}
+function total(){return cart.reduce(function(a,c){return a+pid(c.id).s[c.si][1]*c.q},0)}
+function upd(){$("cc").textContent=cart.reduce(function(a,c){return a+c.q},0);var t=total(),left=Math.max(0,60-t);
+  $("dl").innerHTML=cart.length?cart.map(function(c){var p=pid(c.id);return'<div class="ci"><div class="e">'+p.e+'</div><div><b>'+p.n+'</b><small>'+(c.f?c.f+" · ":"")+p.s[c.si][0]+(c.msg?' · "'+esc(c.msg)+'"':"")+'</small><div class="qty"><button data-m="'+c.k+'" aria-label="Less">−</button>'+c.q+'<button data-p="'+c.k+'" aria-label="More">+</button></div></div><b>'+m(p.s[c.si][1]*c.q)+'</b></div>'}).join(""):'<p style="color:var(--muted);padding:32px 0">Your cart is empty. A fruit cup is a good place to start.</p>';
+  $("df").innerHTML=cart.length?'<div><small style="color:var(--muted)">'+(left?m(left)+" away from free delivery":"You have free delivery")+'</small><div class="prog" style="margin-top:6px"><i style="width:'+Math.min(100,t/60*100)+'%"></i></div></div><div><div class="lab">Delivery date</div><input type="date" id="dd"></div><div style="display:flex;justify-content:space-between;font-weight:600"><span>Total</span><span>'+m(t+(left?5:0))+'</span></div><button class="btn" id="co">Checkout</button>':"";
+  var dd=$("dd");if(dd){var x=new Date(Date.now()+864e5);dd.min=x.toISOString().slice(0,10);dd.value=dd.min}}
+function drawer(o){$("drawer").classList.toggle("open",o);$("scrim").classList.toggle("on",o)}
+function story(){return'<section><div class="wrap"><p class="big rv">Food made generously, because that is how we would want to be fed.</p></div></section><section class="band"><div class="wrap split"><div class="photo rv">🌳</div><div class="rv"><h2>It started with a fruit stall</h2><p class="sub">Benevolant began with one table of ripe fruit and a simple rule: never sell what we would not eat ourselves. The bakery grew from the same idea, with real butter, real vanilla and plenty of time.</p></div></div></section>'+
+'<section><div class="wrap"><h2 class="rv">From orchard to your door</h2><div class="tl" id="tl">'+[["1","Picked","At peak ripeness, early morning."],["2","Prepared","Washed and cut by hand."],["3","Packed","Chilled boxes, compostable cups."],["4","Delivered","Within 24 hours of picking."]].map(function(t){return'<div><div class="n">'+t[0]+'</div><b>'+t[1]+'</b><p>'+t[2]+'</p></div>'}).join("")+'</div></div></section>'+
+'<section class="band"><div class="wrap"><div class="three"><div class="rv"><div class="stat" data-n="24">0</div><p>hours from picking to delivery</p></div><div class="rv"><div class="stat" data-n="40">0</div><p>partner farms and orchards</p></div><div class="rv"><div class="stat" data-n="100">0</div><p>% baked to order</p></div></div></div></section>'+
+'<section><div class="wrap" style="text-align:center"><h2 class="rv">Taste the difference</h2><p class="sub" style="margin:12px auto 28px">Delivery covers the city and nearby suburbs. Questions? hello@benevolant.example</p><a class="btn" href="#/shop">Shop now</a></div></section>'}
+function recipes(){return'<div class="wrap"><div class="head"><h1 style="font-size:clamp(36px,5vw,56px)">Recipes and ideas</h1><p class="sub">Simple ways to enjoy your order. Scale the servings, tick off ingredients and add what you need in one tap.</p></div>'+R.map(function(r,i){return'<div class="rec" data-r="'+i+'"><div><h2 style="font-size:30px">'+r.n+'</h2><p class="lab" style="margin-top:8px">'+r.tm+'</p><div class="lab" style="margin-top:18px">Servings</div><div class="scale">'+[2,4,8,12].map(function(n){return'<button class="chip '+(n==2?"on":"")+'" data-sv="'+n+'">'+n+'</button>'}).join("")+'</div><ul class="ing"></ul><button class="btn" style="margin-top:18px" data-shop="'+i+'">Add Benevolant items to cart</button></div><div><div class="lab">Method</div><ol>'+r.s.map(function(s){return'<li>'+s+'</li>'}).join("")+'</ol></div></div>'}).join("")+'<div style="height:80px"></div></div>';}
+function ings(el){var r=R[el.dataset.r],n=+el.querySelector(".chip.on").dataset.sv,k=n/2;
+  el.querySelector(".ing").innerHTML=r.i.map(function(x){var v=Math.round(x[1]*k*10)/10;return'<li>'+v+" "+x[2]+" "+x[0]+'</li>'}).join("")}
+function reveal(){var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add("in");io.unobserve(e.target);
+  e.target.querySelectorAll&&e.target.querySelectorAll("[data-n]").forEach(function(c){var t=+c.dataset.n,i=0,iv=setInterval(function(){i+=Math.ceil(t/30);if(i>=t){i=t;clearInterval(iv)}c.textContent=i},40)})}})},{threshold:.2});
+  document.querySelectorAll(".rv").forEach(function(e){io.observe(e)});
+  var tl=$("tl");if(tl)new IntersectionObserver(function(es,o){if(es[0].isIntersecting){tl.style.setProperty("--w","100%");o.disconnect()}},{threshold:.4}).observe(tl);
+  document.querySelectorAll(".rec").forEach(ings)}
+document.addEventListener("click",function(e){var t=e.target,b;
+  if(b=t.closest("[data-o]")){e.preventDefault();if(b.classList.contains("add")&&!pid(b.dataset.o).f&&pid(b.dataset.o).s.length==1)add(+b.dataset.o,0,null,"",1);else openP(+b.dataset.o)}
+  else if(b=t.closest("[data-cat]")){cat=b.dataset.cat=="cake"?"cake":b.dataset.cat}
+  else if(b=t.closest("[data-t]")){cat=b.dataset.t;document.querySelectorAll(".tab").forEach(function(x){x.classList.toggle("on",x==b)});grid()}
+  else if(b=t.closest("[data-f]")){fl[b.dataset.f]=!fl[b.dataset.f];b.classList.toggle("on");grid()}
+  else if(b=t.closest("[data-sv]")){var r=b.closest(".rec");r.querySelectorAll("[data-sv]").forEach(function(x){x.classList.toggle("on",x==b)});ings(r)}
+  else if(b=t.closest(".ing li"))b.classList.toggle("done");
+  else if(b=t.closest("[data-shop]")){R[b.dataset.shop].u.forEach(function(u){add(u[0],u[1],pid(u[0]).f?pid(u[0]).f[0]:null,"",1)});drawer(true)}
+  else if(b=t.closest("[data-m]")){var c=cart.filter(function(x){return x.k==b.dataset.m})[0];c.q--;if(c.q<1)cart.splice(cart.indexOf(c),1);save();upd()}
+  else if(b=t.closest("[data-p]")){cart.filter(function(x){return x.k==b.dataset.p})[0].q++;save();upd()}
+  else if(t.id=="co"){var n=cart.length;cart=[];save();upd();drawer(false);var d=$("dlg");d.innerHTML='<div style="padding:48px;text-align:center"><div style="font-size:64px">🎉</div><h2>Thank you</h2><p class="sub" style="margin:12px auto 24px">This is a demo store, so no order was placed and nothing was charged.</p><button class="btn" id="ok">Continue</button></div>';$("ok").onclick=function(){d.close()};d.showModal()}
+});
+$("cb").onclick=function(){drawer(true)};$("cx").onclick=$("scrim").onclick=function(){drawer(false)};
+$("nl").onsubmit=function(e){e.preventDefault();e.target.reset();toast("Thanks for joining")};
+document.addEventListener("change",function(e){if(e.target.id=="sort"){sort=e.target.value;grid()}});
+window.addEventListener("mousemove",function(e){var s=$("stage");if(!s)return;var x=e.clientX/innerWidth-.5,y=e.clientY/innerHeight-.5;s.querySelectorAll("span").forEach(function(a){var k=+a.dataset.s;a.style.transform="translate("+x*k+"px,"+y*k+"px)"})});
+document.addEventListener("keydown",function(e){if(e.key=="Escape")drawer(false)});
+window.addEventListener("hashchange",route);upd();route();
+</script>
+</body>
+</html>
